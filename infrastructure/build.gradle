@@ -1,0 +1,9 @@
+plugins {
+    id "application"
+}
+
+mainClassName = "net.brew.cdk.app.AppKt"
+
+dependencies {
+    implementation("software.amazon.awscdk:apprunner-alpha:2.50.0-alpha.0")
+}

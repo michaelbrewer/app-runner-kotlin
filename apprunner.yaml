@@ -1,0 +1,8 @@
+version: 1.0
+runtime: corretto11
+build:
+  commands:
+    build:
+      - ./gradlew buildFatJar
+run:
+  command: java -Xms256m -jar software/build/libs/software-all.jar  .

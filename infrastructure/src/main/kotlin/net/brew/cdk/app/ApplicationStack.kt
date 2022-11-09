@@ -14,10 +14,10 @@ class ApplicationStack(scope: Construct, id: String, props: StackProps) : Stack(
     init {
         Service(
             this,
-            "AppRunnerPythonDemo",
+            "AppRunnerKotlinDemo",
             ServiceProps
                 .builder()
-                .serviceName("")
+                .serviceName("KotlinService")
                 .source(Source.fromGitHub(
                     GithubRepositoryProps
                         .builder()

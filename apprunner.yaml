@@ -3,8 +3,7 @@ runtime: corretto11
 build:
   commands:
     build:
-      - export OTEL_SERVICE_NAME=kotlin-service
-      -  curl -L https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar  --output opentelemetry-javaagent.jar
+      - curl -L https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar  --output opentelemetry-javaagent.jar
       - ./gradlew buildFatJar
 run:
-  command: java -javaagent:opentelemetry-javaagent.jar -Xms256m -jar software/build/libs/software-all.jar  .
+  command: OTEL_RESOURCE_ATTRIBUTES=service.name=kotlin-service OTEL_PROPAGATORS=xray OTEL_EXPORTER_OTLP_ENDPOINT=xray java -javaagent:opentelemetry-javaagent.jar -Xms256m -jar software/build/libs/software-all.jar  .

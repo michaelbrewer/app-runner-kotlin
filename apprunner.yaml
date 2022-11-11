@@ -6,4 +6,13 @@ build:
       - curl -L https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar  --output opentelemetry-javaagent.jar
       - ./gradlew buildFatJar
 run:
-  command: OTEL_RESOURCE_ATTRIBUTES=service.name=kotlin-service OTEL_PROPAGATORS=xray OTEL_EXPORTER_OTLP_ENDPOINT=xray java -javaagent:opentelemetry-javaagent.jar -Xms256m -jar software/build/libs/software-all.jar  .
+  command: java -javaagent:opentelemetry-javaagent.jar -Xms256m -jar software/build/libs/software-all.jar  .
+  env:
+    - name: OTEL_PROPAGATORS
+      value: xray
+    - name: OTEL_IMR_EXPORT_INTERVAL
+      value: 10000
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: http://localhost:4317
+    - name: OTEL_RESOURCE_ATTRIBUTES
+      value: 'service.name=app_runner_python'

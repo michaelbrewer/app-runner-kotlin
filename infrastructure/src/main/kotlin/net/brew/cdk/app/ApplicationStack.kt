@@ -14,7 +14,7 @@ import software.constructs.Construct
 
 class ApplicationStack(scope: Construct, id: String, props: StackProps) : Stack(scope, id, props) {
     init {
-        // Handy L2 construct is not complete
+        // Handy L2 construct, but is missing observabilityConfiguration support
 //        Service(
 //            this,
 //            "AppRunnerKotlinDemo",
@@ -40,7 +40,6 @@ class ApplicationStack(scope: Construct, id: String, props: StackProps) : Stack(
             RoleProps
                 .builder()
                 .assumedBy(ServicePrincipal("tasks.apprunner.amazonaws.com"))
-                .description("Create App Runner instance access to x-ray")
                 .managedPolicies(listOf(ManagedPolicy.fromAwsManagedPolicyName("AWSXRayDaemonWriteAccess")))
                 .build()
         )

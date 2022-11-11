@@ -85,6 +85,7 @@ class ApplicationStack(scope: Construct, id: String, props: StackProps) : Stack(
                             )
                             .build()
                         )
+                        .autoDeploymentsEnabled(true)
                         .build()
                 )
                 .instanceConfiguration(CfnService.InstanceConfigurationProperty

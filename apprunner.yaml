@@ -13,6 +13,8 @@ run:
       value: xray
     - name: OTEL_IMR_EXPORT_INTERVAL
       value: 10000
+    - name: OTEL_METRICS_EXPORTER
+      value: none
     - name: OTEL_EXPORTER_OTLP_ENDPOINT
       value: http://localhost:4317
     - name: OTEL_RESOURCE_ATTRIBUTES

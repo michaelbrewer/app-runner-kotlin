@@ -3,6 +3,7 @@ runtime: corretto11
 build:
   commands:
     build:
+#      - curl -L https://github.com/aws-observability/aws-otel-java-instrumentation/releases/download/v1.19.2/aws-opentelemetry-agent.jar --output opentelemetry-javaagent.jar
       - curl -L https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar  --output opentelemetry-javaagent.jar
       - ./gradlew buildFatJar
 run:
